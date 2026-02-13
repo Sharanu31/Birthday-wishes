@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday Usha 🎉</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            text-align: center;
+            color: white;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 40px;
+        }
+
+        /* Main Image */
+        .main-photo img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            margin-top: 20px;
+        }
+
+        /* Scrolling Text */
+        .scrolling-text {
+            width: 100%;
+            overflow: hidden;
+            background: white;
+            color: #ff4b5c;
+            padding: 15px 0;
+            margin: 30px 0;
+            font-size: 22px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .scrolling-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scrollText 12s linear infinite;
+        }
+
+        @keyframes scrollText {
+            from { transform: translateX(0%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* Slider */
+        .slider {
+            width: 90%;
+            max-width: 600px;
+            margin: 30px auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+
+        .slides img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        /* Buttons */
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            background: white;
+            color: #ff4b5c;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 15px 10px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ffe6e6;
+            transform: scale(1.05);
+        }
+
+        /* Popup */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: white;
+            color: black;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            animation: pop 0.4s ease;
+        }
+
+        @keyframes pop {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .close {
+            float: right;
+            cursor: pointer;
+            color: red;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>🎂 Happy Birthday ❤️ 🎉</h1>
+
+    <!-- Main Highlight Image -->
+    <div class="main-photo">
+        <img src="images/MainImage.png">
+    </div>
+
+    <button onclick="celebrate()">Celebrate 🎊</button>
+
+    <!-- Scrolling Text -->
+    <div class="scrolling-text">
+        <div class="scrolling-content">
+            🎂 Happy Birthday To Usha Reddy 🎉 💖 🎈 Happy Birthday To Usha Reddy 🎂 🎊
+        </div>
+    </div>
+
+    <!-- Sliding Gallery -->
+    <div class="slider">
+        <div class="slides" id="slideContainer">
+            <img src="images/Main Image001.jpeg">
+            <img src="images/Image01.png">
+            <img src="images/Image02.png">
+            <img src="images/Image03.png">
+            <img src="images/Image04.png">
+            <img src="images/Image05.png">
+            <img src="images/Image06.png">
+            <img src="images/Image07.png">
+             <img src="images/Image08.png">
+              <img src="images/Image09.png"> <img src="images/Image0010.png">
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    
+    <button onclick="openPopup()">Open Letter 💌</button>
+
+    <!-- Popup Letter -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">X</span>
+            <h2>To Usha Reddy 💖</h2>
+            <p>
+                You are truly special and deserve all the happiness in the world.
+                May your smile always shine bright and your dreams come true.
+                Happy Birthday! 🎂✨
+            </p>
+        </div>
+    </div>
+
+<script>
+    // Auto Sliding
+    let index = 0;
+    const slides = document.getElementById("slideContainer");
+    const totalSlides = slides.children.length;
+
+    function autoSlide() {
+        index++;
+        if(index >= totalSlides) {
+            index = 0;
+        }
+        slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    setInterval(autoSlide, 3000);
+
+    // Confetti
+    function celebrate() {
+        confetti({
+            particleCount: 200,
+            spread: 100,
+            origin: { y: 0.6 }
+        });
+    }
+
+    // Popup
+    function openPopup() {
+        document.getElementById("popup").style.display = "flex";
+    }
+
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+</script>
+
+</body>
+</html>
